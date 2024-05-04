@@ -8,6 +8,7 @@ import authRoute from "./Routes/auth.js";
 import userRoute from "./Routes/user.js";
 import doctorRoute from "./Routes/doctor.js";
 import reviewRoute from "./Routes/review.js";
+import { getUserProfile } from "./Controllers/userController.js";
 
 dotenv.config();
 
@@ -20,6 +21,12 @@ const corsOptions={
 
 app.get("/",(req,res)=>{
     res.send('Api is working');
+})
+app.get("/api/v1/auth/login", (req,res)=>
+{
+    getUserProfile(req,res);
+    // res.send('Auth Api Working');
+
 })
 //database connection
 mongoose.set('strictQuery',false)
